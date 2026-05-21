@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Work+Sans:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&family=Beth+Ellen&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Newsreader", serif;
+  --font-body: "Work Sans", sans-serif;
+  --font-label: "Plus Jakarta Sans", sans-serif;
+  --font-script: "Beth Ellen", cursive;
+
+  --color-surface: #fff9ec;
+  --color-on-surface: #32332b;
+  --color-on-surface-variant: #5e6057;
+  --color-primary: #526447;
+  --color-on-primary: #ecffdd;
+  --color-primary-container: #d4e9c4;
+  --color-on-primary-container: #45573b;
+  --color-secondary: #7e535f;
+  --color-on-secondary: #fff7f7;
+  --color-secondary-container: #ffd9e2;
+  --color-on-secondary-container: #6f4652;
+  --color-tertiary: #695f38;
+  --color-tertiary-container: #f7e8b7;
+  --color-on-tertiary-container: #5f552f;
+  --color-outline-variant: #b2b3a8;
+  --color-surface-container-low: #f5f4eb;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #e9e9de;
+  --color-surface-container-highest: #e3e3d7;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-body selection:bg-secondary-container;
+  }
+}
+
+@layer utilities {
+  .film-grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuB_8QfB6_N69uxOvrvDeUEtDHyol2AU4MAcut8pZ8B5F-8MemkklYX83Q3BcQMJcrGzxAUsh0vcdPl7NMXjyPovHtoCLGdTNJf8A0Mw8yvVAvJtjuDXTHX3zq7vqgysRiLae9BnHq-9zsUCKwwvjDIsqVSBrp0C9kXYR_IUhcNC1XpicEyGzJ_m5KZFCM1QW1LuO66U9xJBykOAiadUtZgfm7aWZHIchPBXrdFouxjrsXJ6HurxIFCf_qXgBwUu3d5Qv_HD2fbynhsy);
+  }
+
+  .washi-tape {
+    mask-image: url("data:image/svg+xml;utf8,<svg viewBox=\"0 0 100 20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0 L10 2 L20 0 L30 3 L40 0 L50 2 L60 0 L70 3 L80 0 L90 2 L100 0 V20 L90 18 L80 20 L70 17 L60 20 L50 18 L40 20 L30 17 L20 20 L10 18 L0 20 Z\" fill=\"black\"/></svg>");
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg viewBox=\"0 0 100 20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0 L10 2 L20 0 L30 3 L40 0 L50 2 L60 0 L70 3 L80 0 L90 2 L100 0 V20 L90 18 L80 20 L70 17 L60 20 L50 18 L40 20 L30 17 L20 20 L10 18 L0 20 Z\" fill=\"black\"/></svg>");
+  }
+
+  .journal-lines {
+    background-image: linear-gradient(#b2b3a8 1px, transparent 1px);
+    background-size: 100% 2rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
