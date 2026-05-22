@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, Mail, UploadCloud, Palette, Package, Leaf, Star, Heart } from 'lucide-react';
 import { useState } from 'react';
@@ -9,10 +8,9 @@ export const Home = () => {
     return (
         <div className="pt-20 overflow-x-hidden">
             {/* Hero Section */}
-            {isChatClicked && <Chatbox isChatClicked={isChatClicked} setIsChatClicked={setIsChatClicked} />}
-
+            {isChatClicked && <Chatbox setIsChatClicked={setIsChatClicked} />}
             {!isChatClicked &&
-                <button className="z-[9999] w-28 h-28 fixed right-[4rem] bottom-[4rem] rounded-full bg-amber-50/70 border-solid border-8 border-primary flex justify-center items-center hover:scale-120 hover:transition-all duration-200" onClick={() => { setIsChatClicked(true); console.log("clicked") }}><Mail size={50} className='color-primary'></Mail>
+                <button className="z-[9999] w-28 h-28 fixed right-[4rem] bottom-[4rem] rounded-full bg-amber-50/70 border-solid border-8 border-primary flex justify-center items-center hover:scale-110 transition-all duration-200" onClick={() => { setIsChatClicked(true); console.log("clicked") }}><Mail size={50} className='color-primary'></Mail>
                 </button>}
             <section className="relative px-6 py-12 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
                 <motion.div

@@ -1,13 +1,10 @@
 import { motion } from 'motion/react';
 import { MessageSquare, Edit3, CheckCircle, Package2, ArrowRight, Star, Sparkles, Clock, Send, Palette, Mail } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Chatbox } from '../components/Chatbox';
 import heroImage1 from "../assets/moonagephotos/hero1.png";
 import heroImage2 from "../assets/moonagephotos/hero2.png";
 import studioImage from "../assets/moonagephotos/studio.png";
-import priceImage1 from "../assets/moonagephotos/price1.jpg";
-import priceImage2 from "../assets/moonagephotos/price2.jpg";
-import priceImage3 from "../assets/moonagephotos/price3.png";
 import review1 from "../assets/moonagephotos/review1.jpg";
 import review2 from "../assets/moonagephotos/review2.jpeg";
 import review3 from "../assets/moonagephotos/review3.jpeg";
@@ -156,11 +153,24 @@ export const Inserts = () => {
     const [activeCategory, setActiveCategory] = useState('all');
     const [archiveScrolled, setArchiveScrolled] = useState(false);
     const [isChatClicked, setIsChatClicked] = useState(false);
-   const sectionRef = useRef<HTMLDivElement>(null);
-   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+
+    useEffect(() => {
+        const handleEscape = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                setLightboxImg(null);
+                setActiveStep(null);
+                setOrderModalOpen(false);
+            }
+        };
+        window.addEventListener('keydown', handleEscape);
+        return () => window.removeEventListener('keydown', handleEscape);
+    }, []);
+
     return (
         <div className="pt-20">
-            {isChatClicked && <Chatbox isChatClicked={isChatClicked} setIsChatClicked={setIsChatClicked} />}
+            {isChatClicked && <Chatbox setIsChatClicked={setIsChatClicked} />}
 
             {!isChatClicked &&
                 <button className="z-[9999] w-16 h-16 md:w-20 md:h-20 fixed right-6 bottom-6 md:right-16 md:bottom-16 rounded-full bg-amber-50/70 border-solid border-4 border-primary flex justify-center items-center hover:scale-110 transition-all duration-200" onClick={() => { setIsChatClicked(true); console.log("clicked") }}><Mail size={28} className='color-primary' />
@@ -270,6 +280,7 @@ export const Inserts = () => {
       <img
         className="w-full h-full object-cover opacity-90"
         src={studioImage}
+        alt="Moonage Files studio workspace with handcrafted materials and design tools"
       />
     </div>
 
@@ -291,7 +302,6 @@ export const Inserts = () => {
 </section>
 
 {/* Process Modal */}
-{/* Process Modal */}
 {activeStep !== null && (
   <div
     className="fixed inset-0 z-50 flex items-center justify-center"
@@ -307,6 +317,7 @@ export const Inserts = () => {
       <button
         onClick={() => setActiveStep(null)}
         className="absolute top-8 right-8 text-[#8a8070] hover:text-[#4a4438] text-lg leading-none"
+        aria-label="Close modal"
       >
         ✕
       </button>
@@ -419,7 +430,7 @@ export const Inserts = () => {
                                  <Edit3 className="text-secondary" size={36} />
                             </div>
                             <h3 className="font-headline text-2xl mb-2">2. confirmation</h3>
-                            <p className="text-on-surface-variant font-body px-4 text-base">we’ll finalize the design and <br/>confirm  the price together.</p>
+                            <p className="text-on-surface-variant font-body px-4 text-base">we'll finalize the design and <br/>confirm  the price together.</p>
                         </div>
                         <div className="flex flex-col items-center text-center group">
                             <div
@@ -439,7 +450,7 @@ export const Inserts = () => {
                                 <Package2 className="text-on-surface" size={36} />
                             </div>
                             <h3 className="font-headline text-2xl mb-2">4. fulfillment</h3>
-                            <p className="text-on-surface-variant font-body px-4 text-base">we’ll arrange pickup, meetup, <br/>or delivery once it’s ready.</p>
+                            <p className="text-on-surface-variant font-body px-4 text-base">we'll arrange pickup, meetup, <br/>or delivery once it's ready.</p>
                         </div>
                     </div>
 
@@ -507,7 +518,7 @@ export const Inserts = () => {
     <img
         src={character1}
         className="w-full aspect-[4/5] object-cover"
-        alt="insert only"
+        alt="Custom insert design for phone case"
     />
 </div>
 
@@ -550,7 +561,7 @@ export const Inserts = () => {
     <img
         src={comic3}
         className="w-full aspect-[4/5] object-cover"
-        alt="full set"
+        alt="Full phone case set with custom design"
     />
 </div>
 
@@ -649,6 +660,7 @@ export const Inserts = () => {
                                 pointerEvents: archiveScrolled ? 'auto' : 'none',
                                 transition: 'opacity 0.3s ease',
                             }}
+                            aria-label="Scroll archive left"
                         >
                             <ArrowRight size={16} className="text-[#526447] rotate-180" />
                         </button>
@@ -661,6 +673,7 @@ export const Inserts = () => {
                             }}
                             className="absolute right-0 top-1/2 w-10 h-10 rounded-full bg-[#fbf9f2] border border-[#d9d8ce] shadow-md flex items-center justify-center hover:bg-[#e9e9de] transition-all z-10"
                             style={{ transform: 'translateY(-50%)' }}
+                            aria-label="Scroll archive right"
                         >
                             <ArrowRight size={16} className="text-[#526447]" />
                         </button>
@@ -725,7 +738,7 @@ export const Inserts = () => {
                 width: '160px',
             }}
         >
-                                                    <img src={item.src} className="w-full aspect-[3/4] object-cover" alt={`insert`} />
+                                                    <img src={item.src} className="w-full aspect-[3/4] object-cover" alt={`Archive insert design ${i + 1}`} />
                                                 </div>
                                             ))}
                                         </div>
@@ -744,7 +757,7 @@ export const Inserts = () => {
                 width: '160px',
             }}
         >
-                                                    <img src={item.src} className="w-full aspect-[3/4] object-cover" alt={`insert`} />
+                                                    <img src={item.src} className="w-full aspect-[3/4] object-cover" alt={`Archive insert design ${row1.length + i + 1}`} />
                                                 </div>
                                             ))}
                                         </div>
@@ -789,7 +802,7 @@ export const Inserts = () => {
     <img
         src={review1}
         className="w-full h-full object-cover"
-        alt="Leo's case"
+        alt="Leo's custom phone case design"
     />
 </div>
                             <div className="p-4">
@@ -814,7 +827,7 @@ export const Inserts = () => {
     <img
         src={review2}
         className="w-full h-full object-cover"
-        alt="anonymous case"
+        alt="Anonymous customer's custom phone case with Snoopy design"
     />
 </div>
                             <div className="p-4">
@@ -855,7 +868,7 @@ export const Inserts = () => {
     <img
         src={review3}
         className="w-full h-full object-cover"
-        alt="Henry's case"
+        alt="Henry's custom phone case with accurate design"
     />
 </div>
                             <div className="p-4">
@@ -940,6 +953,7 @@ export const Inserts = () => {
                   <button
                     onClick={() => setOrderModalOpen(false)}
                     className="absolute top-8 right-8 text-[#8a8070] hover:text-[#4a4438] text-lg leading-none"
+                    aria-label="Close modal"
                   >
                     ✕
                   </button>
@@ -1025,6 +1039,7 @@ export const Inserts = () => {
                     transform: 'rotate(3deg)',
                     boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
                 }}
+                aria-label="Close lightbox"
             >
                 ✕ close
             </button>
@@ -1045,6 +1060,7 @@ export const Inserts = () => {
             objectFit: 'contain',
             display: 'block',
         }}
+        alt="Expanded design preview"
     />
 </div>
 
