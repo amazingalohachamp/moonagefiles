@@ -183,7 +183,7 @@ export const Inserts = () => {
                         transition={{ duration: 0.9, ease: "easeOut" }}
                         className="relative z-10"
                     >
-                       <h1 className="font-headline text-5xl md:text-7xl text-on-surface leading-[0.95] mb-6">
+                       <h1 className="font-headline text-6xl md:text-7xl text-on-surface leading-[0.95] mb-6">
     every piece starts as a{" "}
     <span className="italic text-primary">daydream</span>
 </h1>
