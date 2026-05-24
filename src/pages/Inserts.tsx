@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { MessageSquare, Edit3, CheckCircle, Package2, ArrowRight, Star, Sparkles, Clock, Send, Palette, Mail } from 'lucide-react';
+import { MessageSquare, Edit3, CheckCircle, Package2, ArrowRight, Star, Sparkles, Clock, Send, Mail } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { Chatbox } from '../components/Chatbox';
 import heroImage1 from "../assets/moonagephotos/hero1.png";
@@ -193,7 +193,7 @@ export const Inserts = () => {
                             <button onClick={() => setOrderModalOpen(true)} className="bg-primary text-on-primary px-5 py-2.5 md:px-7 md:py-3 rounded-lg text-sm md:text-base font-medium shadow-lg hover:translate-y-[-2px] transition-all active:scale-95 whitespace-nowrap">
                                 order now
                             </button>
-                            <button className="text-tertiary font-script text-lg md:text-xl px-2 py-2 flex items-center gap-1 hover:opacity-80 transition-opacity whitespace-nowrap" onClick={() => sectionRef.current?.scrollIntoView({ behavior: 'smooth' })}>
+                            <button className="text-tertiary font-script text-lg md:text-xl px-2 py-2 flex items-center gap-1 hover:opacity-80 transition-opacity whitespace-nowrap" onClick={() => { if (sectionRef.current) sectionRef.current.scrollIntoView({ behavior: 'smooth' }); }}>
                                 view the archive <ArrowRight size={28} />
                             </button>
                         </div>

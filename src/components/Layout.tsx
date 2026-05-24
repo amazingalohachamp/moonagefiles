@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
-import { ShoppingBag, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export const ScrollToTop = () => {
