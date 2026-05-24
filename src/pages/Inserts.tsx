@@ -187,7 +187,7 @@ export const Inserts = () => {
     every piece starts as a{" "}
     <span className="italic text-primary">daydream</span>
 </h1>
-                        <p className="text-on-surface-variant text-lg max-w-md mb-8 font-body leading-relaxed">
+                        <p className="text-on-surface-variant text-lg max-w-md mb-8 font-body leading-relaxed text-justify">
                             a growing archive of handmade and handpicked things. phone cases for now, with more finding its way into this space.
                         </p>
                         <div className="flex flex-row gap-4 items-center mb-8">
