@@ -257,13 +257,13 @@ export const Inserts = () => {
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-4">
           <h2 className="font-headline italic text-3xl mb-3 text-primary">a note from the studio</h2>
-          <p className="font-body text-sm leading-relaxed text-on-surface-variant">
+          <p className="font-body text-sm leading-relaxed text-on-surface-variant text-justify">
             some things start as daydreams. this one did. the name comes from david bowie's{" "}<span className="italic">moonage daydream</span>, and he said it best.
           </p>
-          <p className="font-body text-sm leading-relaxed text-on-surface-variant italic">
+          <p className="font-body text-sm leading-relaxed text-on-surface-variant italic text-justify">
             "i don't know where i'm going from here, but i promise it won't be boring."
           </p>
-          <p className="font-body text-sm leading-relaxed text-on-surface-variant">
+          <p className="font-body text-sm leading-relaxed text-on-surface-variant text-justify">
             everything here is handmade or handpicked. more coming soon. we're glad you're here.
           </p>
           <div className="pt-1">
