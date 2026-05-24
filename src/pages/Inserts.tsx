@@ -184,7 +184,7 @@ export const Inserts = () => {
                         className="relative z-10"
                     >
                         <h1 className="font-headline text-5xl md:text-7xl text-on-surface leading-[0.95] mb-6">
-                            every piece starts as a <span className="italic text-primary">daydream</span>
+                            every piece starts <br className="hidden md:block" /> as a <span className="italic text-primary">daydream</span>
                         </h1>
                         <p className="text-on-surface-variant text-lg max-w-md mb-8 font-body leading-relaxed">
                             a growing archive of handmade and handpicked things. phone cases for now, with more finding its way into this space.
@@ -837,7 +837,7 @@ export const Inserts = () => {
                                     ))}
                                 </div>
                                 <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
-                                    "everything broooo, esp snoopyyy, i love snoopy, and ang accurate nung drawing sa reference 💯"
+                                    "(i loved) everything broooo, esp snoopyyy, i love snoopy, and ang accurate nung drawing sa reference 💯"
                                 </p>
                                 <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— anonymous</p>
                             </div>
