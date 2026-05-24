@@ -183,9 +183,10 @@ export const Inserts = () => {
                         transition={{ duration: 0.9, ease: "easeOut" }}
                         className="relative z-10"
                     >
-                        <h1 className="font-headline text-5xl md:text-7xl text-on-surface leading-[0.95] mb-6">
-                            every piece starts <br className="hidden md:block" /> as a <span className="italic text-primary">daydream</span>
-                        </h1>
+                       <h1 className="font-headline text-5xl md:text-7xl text-on-surface leading-[0.95] mb-6">
+    every piece starts as a{" "}
+    <span className="italic text-primary">daydream</span>
+</h1>
                         <p className="text-on-surface-variant text-lg max-w-md mb-8 font-body leading-relaxed">
                             a growing archive of handmade and handpicked things. phone cases for now, with more finding its way into this space.
                         </p>
