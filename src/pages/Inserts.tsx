@@ -27,7 +27,11 @@ import bw2 from "../assets/moonagephotos/cases/bw2.png";
 import bw3 from "../assets/moonagephotos/cases/bw3.png";
 import else1 from "../assets/moonagephotos/cases/else1.png";
 
-const CollapsibleNoteA = () => {
+const CollapsibleNoteA = ({ label = "before you order", notes = [
+    "cancellations are not accepted once an order has been confirmed. please make sure you are happy with your design before finalizing.",
+    "some designs may be slightly adjusted or cropped to fit your specific phone model's dimensions.",
+    "minor imperfections and slight color variations are normal given the handmade nature of each case.",
+] }: { label?: string; notes?: string[] }) => {
     const [open, setOpen] = useState(false);
     return (
         <div>
@@ -46,9 +50,8 @@ const CollapsibleNoteA = () => {
                     cursor: 'pointer',
                 }}
             >
-                before you order {open ? '↑' : '↓'}
+                {label} {open ? '↑' : '↓'}
             </button>
-
             {open && (
                 <div
                     className="mt-4 mx-auto text-left"
@@ -61,17 +64,10 @@ const CollapsibleNoteA = () => {
                         animation: 'fadeIn 0.2s ease',
                     }}
                 >
-                    {[
-                        "cancellations are not accepted once an order has been confirmed. please make sure you are happy with your design before finalizing.",
-                        "some designs may be slightly adjusted or cropped to fit your specific phone model's dimensions.",
-                        "minor imperfections and slight color variations are normal given the handmade nature of each case.",
-                    ].map((note, i) => (
+                    {notes.map((note, i) => (
                         <div key={i} className="flex gap-3 mb-2">
                             <span className="text-[#b0a898] text-xs mt-0.5 shrink-0">—</span>
-                            <p
-                                className="text-xs text-[#4a4438] leading-relaxed"
-                                style={{ fontFamily: 'Work Sans, sans-serif' }}
-                            >
+                            <p className="text-xs text-[#4a4438] leading-relaxed" style={{ fontFamily: 'Work Sans, sans-serif' }}>
                                 {note}
                             </p>
                         </div>
@@ -85,11 +81,10 @@ const CollapsibleNoteA = () => {
 const processSteps = [
   {
     num: "step 01",
-    title: "submit your order",
+    title: "begin",
     bg: "#d4e8c8",
     body: [
-      "reach out to us on instagram, facebook, or send an email with your order details. tell us your phone model, what vibe or theme you're going for, and any reference photos or inspo you have.",
-      "the more you share, the better we can make something that feels truly yours. don't worry if you don't have it all figured out yet.",
+      "reach out to us on instagram, facebook, or send an email with your phone model, your design idea or reference photo, and whether you want a full set or insert only. not sure yet? just describe your idea and we’ll figure it out together.",
     ],
   },
   {
@@ -332,7 +327,7 @@ export const Inserts = () => {
           {activeStep === 0 && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#526447" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>}
           {activeStep === 1 && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7e535f" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4z"/></svg>}
           {activeStep === 2 && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#695f38" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>}
-          {activeStep === 3 && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a574e" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>}
+          {activeStep === 3 && <Package2 size={22} stroke="#5a574e" strokeWidth={1.7} />}
         </div>
         <div>
           <p className="text-xs text-[#8a8070] mb-0.5" style={{ fontFamily: 'Work Sans, sans-serif' }}>
@@ -589,12 +584,16 @@ export const Inserts = () => {
         </div>
 
         {/* bottom note */}
-        <p
-            className="text-center text-xs text-[#b0a898] mt-10"
-            style={{ fontFamily: 'Newsreader, serif', fontStyle: 'italic' }}
-        >
-           simpler or more detailed designs may affect pricing.
-        </p>
+<div className="mt-10 text-center">
+    <CollapsibleNoteA
+        label="pricing notes"
+        notes={[
+            "+₱100 for each additional insert.",
+            "insert only orders require borrowing your case for sizing.",
+            "simpler or more detailed designs may affect pricing.",
+        ]}
+    />
+</div>
     </div>
 </motion.section>
 
@@ -879,7 +878,7 @@ export const Inserts = () => {
                                     ))}
                                 </div>
                                 <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
-                                    "the design because the art is accurate."
+                                    "(i loved) the design because the art is accurate."
                                 </p>
                                 <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— henry 🪩</p>
                             </div>
