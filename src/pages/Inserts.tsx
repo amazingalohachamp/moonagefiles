@@ -8,11 +8,16 @@ import studioImage from "../assets/moonagephotos/studio.png";
 import review1 from "../assets/moonagephotos/review1.jpg";
 import review2 from "../assets/moonagephotos/review2.jpeg";
 import review3 from "../assets/moonagephotos/review3.jpeg";
+import review4 from "../assets/moonagephotos/review4.jpeg";
+import review5 from "../assets/moonagephotos/review5.jpeg";
+import review6 from "../assets/moonagephotos/review6.jpeg";
 import comic1 from "../assets/moonagephotos/cases/comic1.png";
 import comic2 from "../assets/moonagephotos/cases/comic2.png";
 import comic3 from "../assets/moonagephotos/cases/comic3.png";
 import comic4 from "../assets/moonagephotos/cases/comic4.png";
 import comic5 from "../assets/moonagephotos/cases/comic5.png";
+import comic6 from "../assets/moonagephotos/cases/comic6.png";
+import comic7 from "../assets/moonagephotos/cases/comic7.png";
 import album1 from "../assets/moonagephotos/cases/album1.png";
 import pet1 from "../assets/moonagephotos/cases/pet1.png";
 import character1 from "../assets/moonagephotos/cases/character1.png";
@@ -147,6 +152,7 @@ export const Inserts = () => {
     const [orderModalOpen, setOrderModalOpen] = useState(false);
     const [activeCategory, setActiveCategory] = useState('all');
     const [archiveScrolled, setArchiveScrolled] = useState(false);
+    const [ratingsScrolled, setRatingsScrolled] = useState(false);
     const [isChatClicked, setIsChatClicked] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
     const [lightboxImg, setLightboxImg] = useState<string | null>(null);
@@ -785,106 +791,231 @@ export const Inserts = () => {
                         <h2 className="font-headline text-6xl italic">ratings</h2>
                     </motion.div>
 
-                    <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true, amount: 0.1 }}
-                        className="grid grid-cols-1 md:grid-cols-4 gap-6"
-                    >
+                    {/* scrollable strip */}
+<div className="relative">
+    {/* left arrow */}
+    <button
+        onClick={() => {
+            const el = document.getElementById('ratings-strip');
+            if (el) el.scrollBy({ left: -400, behavior: 'smooth' });
+        }}
+        className="absolute left-0 top-1/2 w-10 h-10 rounded-full bg-[#fbf9f2] border border-[#d9d8ce] shadow-md flex items-center justify-center hover:bg-[#e9e9de] transition-all z-10"
+        style={{
+            transform: 'translateY(-50%)',
+            opacity: ratingsScrolled ? 1 : 0,
+            pointerEvents: ratingsScrolled ? 'auto' : 'none',
+            transition: 'opacity 0.3s ease',
+        }}
+        aria-label="Scroll ratings left"
+    >
+        <ArrowRight size={16} className="text-[#526447] rotate-180" />
+    </button>
 
-                        {/* Leo — with photo */}
-                        <motion.div
-                            variants={cardVariants}
-                            className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de]"
-                        >
-                            <div className="w-full aspect-square bg-[#d0cec8] cursor-pointer" onClick={() => setLightboxImg(review1)}>
-    <img
-        src={review1}
-        className="w-full h-full object-cover"
-        alt="Leo's custom phone case design"
-    />
+    {/* right arrow */}
+    <button
+        onClick={() => {
+            const el = document.getElementById('ratings-strip');
+            if (el) el.scrollBy({ left: 400, behavior: 'smooth' });
+        }}
+        className="absolute right-0 top-1/2 w-10 h-10 rounded-full bg-[#fbf9f2] border border-[#d9d8ce] shadow-md flex items-center justify-center hover:bg-[#e9e9de] transition-all z-10"
+        style={{ transform: 'translateY(-50%)' }}
+        aria-label="Scroll ratings right"
+    >
+        <ArrowRight size={16} className="text-[#526447]" />
+    </button>
+
+    {/* scrolling strip */}
+    <div
+        id="ratings-strip"
+        className="overflow-x-auto pb-4"
+        style={{ scrollbarWidth: 'none' }}
+        onScroll={(e) => setRatingsScrolled((e.target as HTMLElement).scrollLeft > 10)}
+    >
+        <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.1 }}
+            className="flex gap-6"
+            style={{ width: 'max-content' }}
+        >
+
+            {/* Leo — with photo */}
+            <motion.div
+                variants={cardVariants}
+                className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
+                style={{ width: '280px' }}
+            >
+                <div className="w-full aspect-square bg-[#d0cec8] cursor-pointer" onClick={() => setLightboxImg(review1)}>
+                    <img
+                        src={review1}
+                        className="w-full h-full object-cover"
+                        alt="Leo's custom daredevil phone case design"
+                    />
+                </div>
+                <div className="p-4">
+                    <div className="flex gap-1 mb-2">
+                        {[...Array(5)].map((_, i) => (
+                            <span key={i} style={{ color: '#695f38' }}>★</span>
+                        ))}
+                    </div>
+                    <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
+                        "i loved how accurate it was to the reference and how awesome it looks on my phone!!"
+                    </p>
+                    <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— leo</p>
+                </div>
+            </motion.div>
+
+            {/* Anonymous 1 — with photo */}
+            <motion.div
+                variants={cardVariants}
+                className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
+                style={{ width: '280px' }}
+            >
+                <div className="w-full aspect-square bg-[#d0cec8] overflow-hidden cursor-pointer" onClick={() => setLightboxImg(review2)}>
+                    <img
+                        src={review2}
+                        className="w-full h-full object-cover"
+                        alt="Anonymous customer's custom phone case with Snoopy design"
+                    />
+                </div>
+                <div className="p-4">
+                    <div className="flex gap-1 mb-2">
+                        {[...Array(5)].map((_, i) => (
+                            <span key={i} style={{ color: '#695f38' }}>★</span>
+                        ))}
+                    </div>
+                    <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
+                        "(i loved) everything broooo, esp snoopyyy, i love snoopy, and ang accurate nung drawing sa reference 💯"
+                    </p>
+                    <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— anonymous</p>
+                </div>
+            </motion.div>
+
+            {/* Anonymous 2 — no photo */}
+            <motion.div
+                variants={cardVariants}
+                className="bg-[#f9f3e6] rounded-2xl border border-[#e9e9de] p-4 shrink-0"
+                style={{ width: '280px' }}
+            >
+                <div className="flex gap-1 mb-2">
+                    {[...Array(5)].map((_, i) => (
+                        <span key={i} style={{ color: '#695f38' }}>★</span>
+                    ))}
+                </div>
+                <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
+                    "loved the coloring, art, and how everything looked in general!"
+                </p>
+                <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— anonymous</p>
+            </motion.div>
+
+            {/* Henry — with photo */}
+            <motion.div
+                variants={cardVariants}
+                className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
+                style={{ width: '280px' }}
+            >
+                <div className="w-full aspect-square bg-[#d0cec8] cursor-pointer" onClick={() => setLightboxImg(review3)}>
+                    <img
+                        src={review3}
+                        className="w-full h-full object-cover"
+                        alt="Henry's custom phone design"
+                    />
+                </div>
+                <div className="p-4">
+                    <div className="flex gap-1 mb-2">
+                        {[...Array(5)].map((_, i) => (
+                            <span key={i} style={{ color: '#695f38' }}>★</span>
+                        ))}
+                    </div>
+                    <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
+                        "(i loved) the design because the art is accurate."
+                    </p>
+                    <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— henry 🪩</p>
+                </div>
+            </motion.div>
+
+            {/* Marynie — with photo */}
+            <motion.div
+                variants={cardVariants}
+                className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
+                style={{ width: '280px' }}
+            >
+                <div className="w-full aspect-square bg-[#d0cec8] cursor-pointer" onClick={() => setLightboxImg(review4)}>
+                    <img
+                        src={review4}
+                        className="w-full h-full object-cover"
+                        alt="Marynie's custom phone case design"
+                    />
+                </div>
+                <div className="p-4">
+                    <div className="flex gap-1 mb-2">
+                        {[...Array(5)].map((_, i) => (
+                            <span key={i} style={{ color: '#695f38' }}>★</span>
+                        ))}
+                    </div>
+                    <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
+                        "it's cute hehehe very talented"
+                    </p>
+                    <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— marynie</p>
+                </div>
+            </motion.div>
+
+            {/* Issa — with photo */}
+            <motion.div
+                variants={cardVariants}
+                className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
+                style={{ width: '280px' }}
+            >
+                <div className="w-full aspect-square bg-[#d0cec8] cursor-pointer" onClick={() => setLightboxImg(review5)}>
+                    <img
+                        src={review5}
+                        className="w-full h-full object-cover"
+                        alt="Issa's custom cyclops phone case design"
+                    />
+                </div>
+                <div className="p-4">
+                    <div className="flex gap-1 mb-2">
+                        {[...Array(5)].map((_, i) => (
+                            <span key={i} style={{ color: '#695f38' }}>★</span>
+                        ))}
+                    </div>
+                    <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
+                        "the art and the colors are so so pretty, and the design is scarily accurate!!"
+                    </p>
+                    <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— issa</p>
+                </div>
+            </motion.div>
+
+            {/* Anonymous 3 — with photo */}
+            <motion.div
+                variants={cardVariants}
+                className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
+                style={{ width: '280px' }}
+            >
+                <div className="w-full aspect-square bg-[#d0cec8] overflow-hidden cursor-pointer" onClick={() => setLightboxImg(review6)}>
+                    <img
+                        src={review6}
+                        className="w-full h-full object-cover"
+                        alt="Anonymous customer's custom phone cases with daredevil and star lord design"
+                    />
+                </div>
+                <div className="p-4">
+                    <div className="flex gap-1 mb-2">
+                        {[...Array(5)].map((_, i) => (
+                            <span key={i} style={{ color: '#695f38' }}>★</span>
+                        ))}
+                    </div>
+                    <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
+                        "love the hand-drawn aesthetic, the shading gave them raw authentic comic art feel. it's well worth the price!"
+                    </p>
+                    <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— anonymous</p>
+                </div>
+            </motion.div>
+
+        </motion.div>
+    </div>
 </div>
-                            <div className="p-4">
-                                <div className="flex gap-1 mb-2">
-                                    {[...Array(5)].map((_, i) => (
-                                        <span key={i} style={{ color: '#695f38' }}>★</span>
-                                    ))}
-                                </div>
-                                <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
-                                    "i loved how accurate it was to the reference and how awesome it looks on my phone!!"
-                                </p>
-                                <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— Leo</p>
-                            </div>
-                        </motion.div>
-
-                        {/* Anonymous 1 — with photo */}
-                        <motion.div
-                            variants={cardVariants}
-                            className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de]"
-                        >
-                            <div className="w-full aspect-square bg-[#d0cec8] overflow-hidden cursor-pointer" onClick={() => setLightboxImg(review2)}>
-    <img
-        src={review2}
-        className="w-full h-full object-cover"
-        alt="Anonymous customer's custom phone case with Snoopy design"
-    />
-</div>
-                            <div className="p-4">
-                                <div className="flex gap-1 mb-2">
-                                    {[...Array(5)].map((_, i) => (
-                                        <span key={i} style={{ color: '#695f38' }}>★</span>
-                                    ))}
-                                </div>
-                                <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
-                                    "(i loved) everything broooo, esp snoopyyy, i love snoopy, and ang accurate nung drawing sa reference 💯"
-                                </p>
-                                <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— anonymous</p>
-                            </div>
-                        </motion.div>
-
-                        {/* Anonymous 2 — no photo */}
-                        <motion.div
-                            variants={cardVariants}
-                            className="bg-[#f9f3e6] rounded-2xl border border-[#e9e9de] p-4"
-                        >
-                            <div className="flex gap-1 mb-2">
-                                {[...Array(5)].map((_, i) => (
-                                    <span key={i} style={{ color: '#695f38' }}>★</span>
-                                ))}
-                            </div>
-                            <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
-                                "loved the coloring, art, and how everything looked in general!"
-                            </p>
-                            <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— anonymous</p>
-                        </motion.div>
-
-                        {/* Henry — with photo */}
-                        <motion.div
-                            variants={cardVariants}
-                            className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de]"
-                        >
-                            <div className="w-full aspect-square bg-[#d0cec8] cursor-pointer" onClick={() => setLightboxImg(review3)}>
-    <img
-        src={review3}
-        className="w-full h-full object-cover"
-        alt="Henry's custom phone case with accurate design"
-    />
-</div>
-                            <div className="p-4">
-                                <div className="flex gap-1 mb-2">
-                                    {[...Array(5)].map((_, i) => (
-                                        <span key={i} style={{ color: '#695f38' }}>★</span>
-                                    ))}
-                                </div>
-                                <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
-                                    "(i loved) the design because the art is accurate."
-                                </p>
-                                <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— henry 🪩</p>
-                            </div>
-                        </motion.div>
-
-                    </motion.div>
 
                     {/* leave a review link */}
                     <motion.div
