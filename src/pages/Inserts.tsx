@@ -117,7 +117,7 @@ const processSteps = [
     title: "fulfillment",
     bg: "#e0ded6",
     body: [
-      "once your order is ready, we'll arrange how to get it to you. options include meetup (metro manila), pickup, or delivery via j&t or similar.",
+      "once your order is ready, we'll arrange delivery (via J&T or similar) or meetup, if you're within Gen. T. De Leon, Valenzuela.",
       "delivery fees are shouldered by the buyer. we'll confirm the most convenient option for you.",
     ],
     note: "it'll find its way to you.",
@@ -198,6 +198,22 @@ export const Inserts = () => {
                             <button className="text-tertiary font-script text-lg md:text-xl px-2 py-2 flex items-center gap-1 hover:opacity-80 transition-opacity whitespace-nowrap" onClick={() => { if (sectionRef.current) sectionRef.current.scrollIntoView({ behavior: 'smooth' }); }}>
                                 view the archive <ArrowRight size={28} />
                             </button>
+                        </div>
+
+                        {/* Shipping note - washi tape sticky */}
+                        <div className="relative inline-block max-w-[260px] mb-6 md:mb-0" style={{ transform: 'rotate(-2deg)' }}>
+                            <div className="absolute -top-2 left-6 w-12 h-3.5 rotate-[-4deg] z-10" style={{ background: 'rgba(245,201,201,0.8)' }}></div>
+                            <div
+                                className="px-5 py-3 rounded-sm shadow-sm"
+                                style={{ background: '#f6e9c4', border: '1px solid #e3d4a3' }}
+                            >
+                                <p
+                                    className="text-sm leading-snug"
+                                    style={{ fontFamily: 'Beth Ellen, cursive', color: '#5a4a2a' }}
+                                >
+                                    based in the philippines, shipping anywhere !
+                                </p>
+                            </div>
                         </div>
                     </motion.div>
 
@@ -594,9 +610,10 @@ export const Inserts = () => {
     <CollapsibleNoteA
         label="pricing notes"
         notes={[
+             "simpler or more detailed designs may affect pricing.",
             "+₱100 for each additional insert.",
-            "insert only orders require borrowing your case for sizing.",
-            "simpler or more detailed designs may affect pricing.",
+            "insert only orders require borrowing your case for sizing, available only within gen. t. de leon, valenzuela, for convinience.",
+            "delivery fees are shouldered by the buyer. for international orders, this can cost more than the item itself.",
         ]}
     />
 </div>
@@ -700,6 +717,8 @@ export const Inserts = () => {
                                     { src: comic3, cat: 'comics' },
                                     { src: album1, cat: 'album' },
                                     { src: comic5, cat: 'comics' },
+                                    { src: comic7, cat: 'comics' },
+                                    { src: comic6, cat: 'comics' },
                                     { src: character1, cat: 'characters' },
                                     { src: character2, cat: 'characters' },
                                     { src: character3, cat: 'characters' },
@@ -840,17 +859,17 @@ export const Inserts = () => {
             style={{ width: 'max-content' }}
         >
 
-            {/* Leo — with photo */}
+            {/* Anonymous 3 — with photo */}
             <motion.div
                 variants={cardVariants}
                 className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
                 style={{ width: '280px' }}
             >
-                <div className="w-full aspect-square bg-[#d0cec8] cursor-pointer" onClick={() => setLightboxImg(review1)}>
+                <div className="w-full aspect-square bg-[#d0cec8] overflow-hidden cursor-pointer" onClick={() => setLightboxImg(review6)}>
                     <img
-                        src={review1}
+                        src={review6}
                         className="w-full h-full object-cover"
-                        alt="Leo's custom daredevil phone case design"
+                        alt="Anonymous customer's custom phone cases with daredevil and star lord design"
                     />
                 </div>
                 <div className="p-4">
@@ -860,104 +879,9 @@ export const Inserts = () => {
                         ))}
                     </div>
                     <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
-                        "i loved how accurate it was to the reference and how awesome it looks on my phone!!"
-                    </p>
-                    <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— leo</p>
-                </div>
-            </motion.div>
-
-            {/* Anonymous 1 — with photo */}
-            <motion.div
-                variants={cardVariants}
-                className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
-                style={{ width: '280px' }}
-            >
-                <div className="w-full aspect-square bg-[#d0cec8] overflow-hidden cursor-pointer" onClick={() => setLightboxImg(review2)}>
-                    <img
-                        src={review2}
-                        className="w-full h-full object-cover"
-                        alt="Anonymous customer's custom phone case with Snoopy design"
-                    />
-                </div>
-                <div className="p-4">
-                    <div className="flex gap-1 mb-2">
-                        {[...Array(5)].map((_, i) => (
-                            <span key={i} style={{ color: '#695f38' }}>★</span>
-                        ))}
-                    </div>
-                    <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
-                        "(i loved) everything broooo, esp snoopyyy, i love snoopy, and ang accurate nung drawing sa reference 💯"
+                        "love the hand-drawn aesthetic, the shading gave them raw authentic comic art feel. it's well worth the price!"
                     </p>
                     <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— anonymous</p>
-                </div>
-            </motion.div>
-
-            {/* Anonymous 2 — no photo */}
-            <motion.div
-                variants={cardVariants}
-                className="bg-[#f9f3e6] rounded-2xl border border-[#e9e9de] p-4 shrink-0"
-                style={{ width: '280px' }}
-            >
-                <div className="flex gap-1 mb-2">
-                    {[...Array(5)].map((_, i) => (
-                        <span key={i} style={{ color: '#695f38' }}>★</span>
-                    ))}
-                </div>
-                <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
-                    "loved the coloring, art, and how everything looked in general!"
-                </p>
-                <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— anonymous</p>
-            </motion.div>
-
-            {/* Henry — with photo */}
-            <motion.div
-                variants={cardVariants}
-                className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
-                style={{ width: '280px' }}
-            >
-                <div className="w-full aspect-square bg-[#d0cec8] cursor-pointer" onClick={() => setLightboxImg(review3)}>
-                    <img
-                        src={review3}
-                        className="w-full h-full object-cover"
-                        alt="Henry's custom phone design"
-                    />
-                </div>
-                <div className="p-4">
-                    <div className="flex gap-1 mb-2">
-                        {[...Array(5)].map((_, i) => (
-                            <span key={i} style={{ color: '#695f38' }}>★</span>
-                        ))}
-                    </div>
-                    <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
-                        "(i loved) the design because the art is accurate."
-                    </p>
-                    <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— henry 🪩</p>
-                </div>
-            </motion.div>
-
-            {/* Marynie — with photo */}
-            <motion.div
-                variants={cardVariants}
-                className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
-                style={{ width: '280px' }}
-            >
-                <div className="w-full aspect-square bg-[#d0cec8] cursor-pointer" onClick={() => setLightboxImg(review4)}>
-                    <img
-                        src={review4}
-                        className="w-full h-full object-cover"
-                        alt="Marynie's custom phone case design"
-                    />
-                </div>
-                <div className="p-4">
-                    <div className="flex gap-1 mb-2">
-                        {[...Array(5)].map((_, i) => (
-                            <span key={i} style={{ color: '#695f38' }}>★</span>
-                        ))}
-                    </div>
-                    <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
-                        "it's cute hehehe very talented"
-                    </p>
-                    <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— marynie</p>
                 </div>
             </motion.div>
 
@@ -987,17 +911,17 @@ export const Inserts = () => {
                 </div>
             </motion.div>
 
-            {/* Anonymous 3 — with photo */}
+            {/* Marynie — with photo */}
             <motion.div
                 variants={cardVariants}
                 className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
                 style={{ width: '280px' }}
             >
-                <div className="w-full aspect-square bg-[#d0cec8] overflow-hidden cursor-pointer" onClick={() => setLightboxImg(review6)}>
+                <div className="w-full aspect-square bg-[#d0cec8] cursor-pointer" onClick={() => setLightboxImg(review4)}>
                     <img
-                        src={review6}
+                        src={review4}
                         className="w-full h-full object-cover"
-                        alt="Anonymous customer's custom phone cases with daredevil and star lord design"
+                        alt="Marynie's custom phone case design"
                     />
                 </div>
                 <div className="p-4">
@@ -1007,9 +931,104 @@ export const Inserts = () => {
                         ))}
                     </div>
                     <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
-                        "love the hand-drawn aesthetic, the shading gave them raw authentic comic art feel. it's well worth the price!"
+                        "it's cute hehehe very talented"
+                    </p>
+                    <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— marynie</p>
+                </div>
+            </motion.div>
+
+            {/* Henry — with photo */}
+            <motion.div
+                variants={cardVariants}
+                className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
+                style={{ width: '280px' }}
+            >
+                <div className="w-full aspect-square bg-[#d0cec8] cursor-pointer" onClick={() => setLightboxImg(review3)}>
+                    <img
+                        src={review3}
+                        className="w-full h-full object-cover"
+                        alt="Henry's custom phone design"
+                    />
+                </div>
+                <div className="p-4">
+                    <div className="flex gap-1 mb-2">
+                        {[...Array(5)].map((_, i) => (
+                            <span key={i} style={{ color: '#695f38' }}>★</span>
+                        ))}
+                    </div>
+                    <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
+                        "(i loved) the design because the art is accurate."
+                    </p>
+                    <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— henry 🪩</p>
+                </div>
+            </motion.div>
+
+            {/* Anonymous 2 — no photo */}
+            <motion.div
+                variants={cardVariants}
+                className="bg-[#f9f3e6] rounded-2xl border border-[#e9e9de] p-4 shrink-0"
+                style={{ width: '280px' }}
+            >
+                <div className="flex gap-1 mb-2">
+                    {[...Array(5)].map((_, i) => (
+                        <span key={i} style={{ color: '#695f38' }}>★</span>
+                    ))}
+                </div>
+                <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
+                    "loved the coloring, art, and how everything looked in general!"
+                </p>
+                <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— anonymous</p>
+            </motion.div>
+
+            {/* Anonymous 1 — with photo */}
+            <motion.div
+                variants={cardVariants}
+                className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
+                style={{ width: '280px' }}
+            >
+                <div className="w-full aspect-square bg-[#d0cec8] overflow-hidden cursor-pointer" onClick={() => setLightboxImg(review2)}>
+                    <img
+                        src={review2}
+                        className="w-full h-full object-cover"
+                        alt="Anonymous customer's custom phone case with Snoopy design"
+                    />
+                </div>
+                <div className="p-4">
+                    <div className="flex gap-1 mb-2">
+                        {[...Array(5)].map((_, i) => (
+                            <span key={i} style={{ color: '#695f38' }}>★</span>
+                        ))}
+                    </div>
+                    <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
+                        "(i loved) everything broooo, esp snoopyyy, i love snoopy, and ang accurate nung drawing sa reference 💯"
                     </p>
                     <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— anonymous</p>
+                </div>
+            </motion.div>
+
+            {/* Leo — with photo */}
+            <motion.div
+                variants={cardVariants}
+                className="bg-[#f9f3e6] rounded-2xl overflow-hidden border border-[#e9e9de] shrink-0"
+                style={{ width: '280px' }}
+            >
+                <div className="w-full aspect-square bg-[#d0cec8] cursor-pointer" onClick={() => setLightboxImg(review1)}>
+                    <img
+                        src={review1}
+                        className="w-full h-full object-cover"
+                        alt="Leo's custom daredevil phone case design"
+                    />
+                </div>
+                <div className="p-4">
+                    <div className="flex gap-1 mb-2">
+                        {[...Array(5)].map((_, i) => (
+                            <span key={i} style={{ color: '#695f38' }}>★</span>
+                        ))}
+                    </div>
+                    <p className="text-sm text-[#3a3a2e] italic mb-2" style={{ fontFamily: 'Newsreader, serif' }}>
+                        "i loved how accurate it was to the reference and how awesome it looks on my phone!!"
+                    </p>
+                    <p className="text-xs text-[#8a8070]" style={{ fontFamily: 'Work Sans, sans-serif' }}>— leo</p>
                 </div>
             </motion.div>
 
